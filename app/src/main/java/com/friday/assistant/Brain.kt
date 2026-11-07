@@ -45,7 +45,7 @@ Abhi ka samay: """.trimIndent() + " " + now
         val key = ctx.getSharedPreferences("friday", Context.MODE_PRIVATE)
             .getString("key", "")?.trim() ?: ""
         if (key.isEmpty()) return local(user, "API key set nahi hai.")
-        if (key.startsWith("AIza")) {
+        if (!key.startsWith("sk-")) {
             return try {
                 askGemini(key, user)
             } catch (e: Exception) {
